@@ -13,3 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+ .yelp-header {
+     display: block;
+     background: red;
+     height: 50px;
+ }
+
+ .footer-div {
+     display: flex;
+     margin: auto;
+     justify-content: center;
+     margin-top: 150px; 
+ }
