@@ -10,7 +10,7 @@ export const removeErrors = () => ({
 })
 
 export const clearErrors = () => dispatch => (
-    () => dispacth({type: REMOVE_ERRORS})
+    dispatch({type: REMOVE_ERRORS})
 )
 
 export const receiveCurrentUser = currentUser => ({
