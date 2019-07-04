@@ -7,9 +7,7 @@ import {AuthRoute} from '../util/route_util';
 
 const App = () => (
     <div>
-        <header className="yelp-header">
-            <GreetingContainer/>
-        </header>
+        <GreetingContainer/>
         <AuthRoute path='/login' component={LoginFormContainer}/>
         <AuthRoute path='/signup' component={SignupFormContainer}/>
         <div className='footer-div'>
