@@ -38,7 +38,7 @@ class SignUpSessionForm extends React.Component {
         return (
             <ul>
                 {this.props.errors.map((error, i) => (
-                    <li key={`error-${i}`}>
+                    <li className="error" key={`error-${i}`}>
                         {error}
                     </li>
                 ))}
@@ -57,8 +57,10 @@ class SignUpSessionForm extends React.Component {
                         <img className='logo-image' src="https://divineeventslv.com/wp-content/uploads/2018/04/yelp-logo-27.png" />
                     </a>
                 </header>
+                <div className='errors'>
+                    {this.renderErrors()}
+                </div>
                 <div className='login-page'>
-                    
                     <div className="login-form-container">
                         <h3 className="login-form-header">Sign Up for Kelp</h3>
                         <form onSubmit={this.handleSubmit} className="login-form-box">
@@ -68,11 +70,10 @@ class SignUpSessionForm extends React.Component {
                             <fieldset className="or-line">
                                 <legend align="center">OR</legend>
                             </fieldset>
-                            {this.renderErrors()}
                             <div className="login-form">
                                 <br />
                                 <label>
-                                    <input type="text"
+                                    <input type="email"
                                         value={this.state.email}
                                         onChange={this.update('email')}
                                         className="login-input"

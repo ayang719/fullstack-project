@@ -463,6 +463,7 @@ function (_React$Component) {
     value: function renderErrors() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "error",
           key: "error-".concat(i)
         }, error);
       }));
@@ -481,6 +482,8 @@ function (_React$Component) {
         className: "logo-image",
         src: "https://divineeventslv.com/wp-content/uploads/2018/04/yelp-logo-27.png"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "errors"
+      }, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-page"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form-container"
@@ -498,10 +501,10 @@ function (_React$Component) {
         className: "or-line"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("legend", {
         align: "center"
-      }, "OR")), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "OR")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
+        type: "email",
         value: this.state.email,
         onChange: this.update('email'),
         className: "login-input",
@@ -623,6 +626,7 @@ function (_React$Component) {
     value: function renderErrors() {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, this.props.errors.map(function (error, i) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+          className: "error",
           key: "error-".concat(i)
         }, error);
       }));
@@ -641,6 +645,8 @@ function (_React$Component) {
         className: "logo-image",
         src: "https://divineeventslv.com/wp-content/uploads/2018/04/yelp-logo-27.png"
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "errors"
+      }, this.renderErrors()), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-page"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form-container"
@@ -658,10 +664,10 @@ function (_React$Component) {
         className: "or-line"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("legend", {
         align: "center"
-      }, "OR")), this.renderErrors(), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "OR")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "login-form"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-        type: "text",
+        type: "email",
         value: this.state.email,
         onChange: this.update('email'),
         className: "login-input",

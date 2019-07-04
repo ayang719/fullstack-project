@@ -58,6 +58,21 @@
     margin: auto;
 }
 
+.error{
+    display: block;
+    background: pink;
+    width: 500px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.errors{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
 .login-page {
     margin: auto;
     display: flex;
