@@ -53,7 +53,7 @@ class SignUpSessionForm extends React.Component {
             <div>
                 <header className="yelp-header">
                     <a className='kelp-logo' href="/">
-                        <img src="../../app/assets/images/coollogo_com-31684455.png" />
+                        <img className='logo-text' src="../../coollogo_com-31684455.png" />
                         <img className='logo-image' src="https://divineeventslv.com/wp-content/uploads/2018/04/yelp-logo-27.png" />
                     </a>
                 </header>

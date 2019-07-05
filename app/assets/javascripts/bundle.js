@@ -194,13 +194,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     path: "/login",
     component: _session_form_login_form_container__WEBPACK_IMPORTED_MODULE_2__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
     path: "/signup",
     component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Route"], {
+    path: "/"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "footer-div"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
     className: "footer"
@@ -477,7 +479,8 @@ function (_React$Component) {
         className: "kelp-logo",
         href: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "../../../app/assets/images/coollogo_com-31684455.png"
+        className: "logo-text",
+        src: "../../coollogo_com-31684455.png"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "logo-image",
         src: "https://divineeventslv.com/wp-content/uploads/2018/04/yelp-logo-27.png"
@@ -640,7 +643,8 @@ function (_React$Component) {
         className: "kelp-logo",
         href: "/"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: "../../app/assets/images/coollogo_com-31684455.png"
+        className: "logo-text",
+        src: "../../coollogo_com-31684455.png"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "logo-image",
         src: "https://divineeventslv.com/wp-content/uploads/2018/04/yelp-logo-27.png"
