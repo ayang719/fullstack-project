@@ -15,7 +15,7 @@ class SignUpSessionForm extends React.Component {
     demoLogin(e) {
         e.preventDefault();
         const demoUser = { email: "kelpman@gmail.com", password: "password" };
-        this.props.processForm(demoUser);
+        this.props.login(demoUser);
     }
     componentWillUnmount() {
         this.props.clearErrors();
