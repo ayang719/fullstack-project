@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import GreetingsContainer from '../greeting/greeting_container';
 
 class Splash extends React.Component {
 
@@ -11,11 +12,10 @@ class Splash extends React.Component {
 
         return(
             <div className='splash-container'>
+                <GreetingsContainer/>
                 <div className='homepage-container'>
                     <div className='splash-header'>
-                        <Link to='/login'>Log In</Link>
-                        Or
-                        <Link to='signup'>Sign Up</Link>
+
                     </div>
                     <div className='rec-businesses'>
                         <Link to='/businesses/1'>Mc'Donalds</Link>

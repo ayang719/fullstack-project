@@ -18,6 +18,17 @@ class Api::BusinessesController < ApplicationController
         @businesses = Business.all
     end
 
+    def update
+        @business = Business.with_attached_photos.find(params[:id])
+        debugger
+        @business.photos.attach(business_params[photos][0])
+        if @business.save
+            render json: {message: 'it worked'}
+        else
+            render json: @business.errors.full_messages
+        end
+    end
+
     private
 
     def business_params

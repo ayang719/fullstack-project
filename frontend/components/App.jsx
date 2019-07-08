@@ -6,14 +6,14 @@ import BusinessShowContainer from './business/business_show_container';
 import Splash from './splash/splash_container'
 import { Switch, Route } from 'react-router-dom'
 import {AuthRoute} from '../util/route_util';
-
+import PhotoForm from './business/photo_form_container';
 
 const App = () => (
     <div>
-        <GreetingContainer/>
         <Switch>
             <AuthRoute path='/login' component={LoginFormContainer}/>
             <AuthRoute path='/signup' component={SignupFormContainer}/>
+            <Route path='/businesses/:businessId/photo' component={PhotoForm}/>
             <Route path='/businesses/:businessId' component={BusinessShowContainer}/>
             <Route path='/'component={Splash}/>
         </Switch>
