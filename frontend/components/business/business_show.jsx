@@ -15,9 +15,14 @@ class BusinessShow extends React.Component {
                 <NavBarContainer/>
                 <div className='show-page-container'>
                     <div className='show-page'>
-                        <h1 className='title'>
-                            {this.props.business.name}
-                            <Link to={`/businesses/${this.props.business.id}/photo`}>add photo</Link>
+                        <h1 className='header-content'>
+                            <div className='title'>
+                                {this.props.business.name}
+                            </div>
+                            <div className='add-photo-button-div'>
+                                <Link to={`/businesses/${this.props.business.id}/photo`}><img className='add-photo-icon' src="../../add-photo-icon.png" alt=""/></Link>
+                                <Link className='add-photo-button' to={`/businesses/${this.props.business.id}/photo`}>Add Photo</Link>
+                            </div>
                         </h1>
                         <div className='show-content'>              
                             <div className='info-list-div'>

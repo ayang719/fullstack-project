@@ -21,7 +21,7 @@ class Api::BusinessesController < ApplicationController
     def update
         @business = Business.with_attached_photos.find(params[:id])
         debugger
-        @business.photos.attach(business_params[photos][0])
+        @business.photos.attach(business_params[:photos][0])
         if @business.save
             render json: {message: 'it worked'}
         else
@@ -32,6 +32,7 @@ class Api::BusinessesController < ApplicationController
     private
 
     def business_params
+        
         params.require(:business).permit(:name, :address, :phone_number, photos: [])
     end
 end

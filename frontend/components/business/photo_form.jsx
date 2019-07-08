@@ -16,21 +16,24 @@ class PhotoForm extends React.Component {
     // }
 
     handleFile(e) {
-        this.setState({photoFile: e.currentTarget.files[0]});
+        this.setState({photoFile: e.currentTarget.files});
     }
 
     handleSubmit(e) {
         e.preventDefault();
         const formData = new FormData();
-        formData.append('business[photos]', this.state.photoFile)
+        formData.append('business[photos][]', this.state.photoFile[0]);
+        formData.append('business[name]', this.props.business.name);
+        formData.append('business[address]', this.props.business.address);
+        formData.append('business[phone_number]', this.props.business.phone_number);
+        // debugger;
         $.ajax({
             url: `api/businesses/${this.props.business.id}`,
             method: 'PATCH',
             data: formData,
-            contentType: false,
             processData: false,
-        }).then( response => console.log(response.message),
-                 response => console.log(response.responseJSON))
+            contentType: false
+        })
     }
 
     componentDidMount() {

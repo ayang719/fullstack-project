@@ -255,7 +255,7 @@ var App = function App() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["AuthRoute"], {
     path: "/signup",
     component: _session_form_signup_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Route"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_route_util__WEBPACK_IMPORTED_MODULE_7__["ProtectedRoute"], {
     path: "/businesses/:businessId/photo",
     component: _business_photo_form_container__WEBPACK_IMPORTED_MODULE_8__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_6__["Route"], {
@@ -339,10 +339,21 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-page"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+        className: "header-content"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "title"
-      }, this.props.business.name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }, this.props.business.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "add-photo-button-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/businesses/".concat(this.props.business.id, "/photo")
-      }, "add photo")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "add-photo-icon",
+        src: "../../add-photo-icon.png",
+        alt: ""
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        className: "add-photo-button",
+        to: "/businesses/".concat(this.props.business.id, "/photo")
+      }, "Add Photo"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "info-list-div"
@@ -601,7 +612,7 @@ function (_React$Component) {
     key: "handleFile",
     value: function handleFile(e) {
       this.setState({
-        photoFile: e.currentTarget.files[0]
+        photoFile: e.currentTarget.files
       });
     }
   }, {
@@ -609,17 +620,17 @@ function (_React$Component) {
     value: function handleSubmit(e) {
       e.preventDefault();
       var formData = new FormData();
-      formData.append('business[photos]', this.state.photoFile);
+      formData.append('business[photos][]', this.state.photoFile[0]);
+      formData.append('business[name]', this.props.business.name);
+      formData.append('business[address]', this.props.business.address);
+      formData.append('business[phone_number]', this.props.business.phone_number); // debugger;
+
       $.ajax({
         url: "api/businesses/".concat(this.props.business.id),
         method: 'PATCH',
         data: formData,
-        contentType: false,
-        processData: false
-      }).then(function (response) {
-        return console.log(response.message);
-      }, function (response) {
-        return console.log(response.responseJSON);
+        processData: false,
+        contentType: false
       });
     }
   }, {
