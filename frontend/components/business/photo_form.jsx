@@ -48,10 +48,13 @@ class PhotoForm extends React.Component {
             <div>
                 <NavBarContainer/>
                 <div className='photo-form-page'>
-                    <h2>
+                    <h2 className='show-link-h2'>
                         <Link className='show-link' to={`/businesses/${this.props.business.id}`}>{this.props.business.name}:</Link>
                         <b className='add-photos-text'> Add Photos</b>
                     </h2>
+                    <div className='link-to-pi-div'>
+                        <Link className='link-to-pi' to={`/businesses/${this.props.business.id}/photos`}>View all Photos</Link>
+                    </div>
                     <div className='upload-form-div'>
                         <form className='upload-form' onSubmit={this.handleSubmit.bind(this)}>
                             <input className='file-input'type="file"

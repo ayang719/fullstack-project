@@ -4,6 +4,8 @@ import configureStore from './store/store'
 import Root from './components/root';
 import * as APIUtil from './actions/session_actions'
 import { fetchBusinesses, fetchBusiness } from './actions/business_actions';
+import {fetchReview} from './actions/review_actions';
+import {createReview} from './util/review_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
@@ -20,9 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         store = configureStore();
     }
+    window.dispatch = store.dispatch
     window.getState = store.getState;
     window.fetchBusiness = fetchBusiness;
     window.fetchBusinesses = fetchBusinesses;
+    window.fetchReview = fetchReview;
+    window.createReview = createReview;
     const root = document.getElementById('root');
 
     ReactDom.render(<Root store={store}/>, root);

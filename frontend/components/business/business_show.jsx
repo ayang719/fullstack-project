@@ -7,6 +7,7 @@ class BusinessShow extends React.Component {
 
     componentDidMount() {
         this.props.fetchBusiness(this.props.match.params.businessId);
+        this.props.fetchReviews(this.props.match.params.businessId)
     }
     render() {
         if(this.props.business === undefined) return null;
@@ -63,6 +64,11 @@ class BusinessShow extends React.Component {
                         <div className='reviews-index'>
                             <div className='reviews-header'>
                                 <h2>Recommended Reviews <b className='business-name'>for {this.props.business.name}</b></h2>
+                            </div>
+                            <div className='reviews-list-div'>
+                                <ul className='reviews-list'>
+                                    {/* {this.props.business.reviewIds.map(review => (<li>{review.body}</li>))} */}
+                                </ul>
                             </div>
                         </div>
                         <div className='info-rail'>

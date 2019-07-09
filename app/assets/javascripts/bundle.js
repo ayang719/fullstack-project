@@ -135,6 +135,55 @@ var fetchBusiness = function fetchBusiness(id) {
 
 /***/ }),
 
+/***/ "./frontend/actions/review_actions.js":
+/*!********************************************!*\
+  !*** ./frontend/actions/review_actions.js ***!
+  \********************************************/
+/*! exports provided: RECEIVE_REVIEWS, CREATE_REVIEW, fetchReviews, fetchReview */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_REVIEWS", function() { return RECEIVE_REVIEWS; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CREATE_REVIEW", function() { return CREATE_REVIEW; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchReviews", function() { return fetchReviews; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchReview", function() { return fetchReview; });
+/* harmony import */ var _util_review_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/review_api_util */ "./frontend/util/review_api_util.js");
+
+var RECEIVE_REVIEWS = 'RECEIVE_REVIEWS';
+var CREATE_REVIEW = 'CREATE_REVIEW';
+
+var recieveReviews = function recieveReviews(reviews) {
+  return {
+    type: RECEIVE_REVIEWS,
+    reviews: reviews
+  };
+};
+
+var createReview = function createReview(review) {
+  return {
+    type: CREATE_REVIEW,
+    review: review
+  };
+};
+
+var fetchReviews = function fetchReviews(businessId) {
+  return function (dispatch) {
+    return _util_review_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchReviews"](businessId).then(function (reviews) {
+      return dispatch(recieveReviews(reviews));
+    });
+  };
+};
+var fetchReview = function fetchReview(review) {
+  return function (dispatch) {
+    return _util_review_api_util__WEBPACK_IMPORTED_MODULE_0__["createReview"](review).then(function (review) {
+      return dispatch(createReview(review));
+    });
+  };
+};
+
+/***/ }),
+
 /***/ "./frontend/actions/session_actions.js":
 /*!*********************************************!*\
   !*** ./frontend/actions/session_actions.js ***!
@@ -334,6 +383,7 @@ function (_React$Component) {
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.fetchBusiness(this.props.match.params.businessId);
+      this.props.fetchReviews(this.props.match.params.businessId);
     }
   }, {
     key: "render",
@@ -411,7 +461,11 @@ function (_React$Component) {
         className: "reviews-header"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Recommended Reviews ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
         className: "business-name"
-      }, "for ", this.props.business.name)))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "for ", this.props.business.name))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "reviews-list-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "reviews-list"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "info-rail"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "bus-hours"
@@ -538,13 +592,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _actions_business_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../actions/business_actions */ "./frontend/actions/business_actions.js");
 /* harmony import */ var _business_show__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./business_show */ "./frontend/components/business/business_show.jsx");
+/* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/review_actions */ "./frontend/actions/review_actions.js");
+
 
 
 
 
 var mapStateToProps = function mapStateToProps(state, ownProps) {
   var businessId = parseInt(ownProps.match.params.businessId);
-  var business = state.entities.businesses[businessId];
+  var business = state.entities.businesses[businessId]; // const reviews = business.reviews
+
   return {
     business: business
   };
@@ -554,6 +611,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchBusiness: function fetchBusiness(id) {
       return dispatch(Object(_actions_business_actions__WEBPACK_IMPORTED_MODULE_1__["fetchBusiness"])(id));
+    },
+    fetchReviews: function fetchReviews(id) {
+      return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_3__["fetchReviews"])(id));
     }
   };
 };
@@ -658,12 +718,19 @@ function (_React$Component) {
       if (!this.props.business) return null;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "photo-form-page"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+        className: "show-link-h2"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
         className: "show-link",
         to: "/businesses/".concat(this.props.business.id)
       }, this.props.business.name, ":"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
         className: "add-photos-text"
       }, " Add Photos")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "link-to-pi-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        className: "link-to-pi",
+        to: "/businesses/".concat(this.props.business.id, "/photos")
+      }, "View all Photos")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "upload-form-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         className: "upload-form",
@@ -985,6 +1052,8 @@ var NavBar = function NavBar(_ref) {
 
   var sessionLinks = function sessionLinks() {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      className: "full-nav-bar"
+    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "navbar-container"
     }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       className: "navbar-content"
@@ -1005,7 +1074,7 @@ var NavBar = function NavBar(_ref) {
     }, "Log In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
       className: "signup-nav",
       to: "/signup"
-    }, "Sign up"))));
+    }, "Sign up")))));
   };
 
   var personalGreeting = function personalGreeting() {
@@ -1604,7 +1673,9 @@ function (_React$Component) {
         className: "rec-businesses"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         to: "/businesses/1"
-      }, "Mc'Donalds"))));
+      }, "McDonalds"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+        to: "/businesses/2"
+      }, "Hog Island Oyster Co"))));
     }
   }]);
 
@@ -1627,6 +1698,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _splash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./splash */ "./frontend/components/splash/splash.jsx");
 /* harmony import */ var _actions_business_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/business_actions */ "./frontend/actions/business_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/session_actions */ "./frontend/actions/session_actions.js");
+
 
 
 
@@ -1664,7 +1737,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_root__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/root */ "./frontend/components/root.jsx");
 /* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./actions/session_actions */ "./frontend/actions/session_actions.js");
 /* harmony import */ var _actions_business_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./actions/business_actions */ "./frontend/actions/business_actions.js");
+/* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./actions/review_actions */ "./frontend/actions/review_actions.js");
+/* harmony import */ var _util_review_api_util__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./util/review_api_util */ "./frontend/util/review_api_util.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
 
 
 
@@ -1690,9 +1767,12 @@ document.addEventListener('DOMContentLoaded', function () {
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_2__["default"])();
   }
 
+  window.dispatch = store.dispatch;
   window.getState = store.getState;
   window.fetchBusiness = _actions_business_actions__WEBPACK_IMPORTED_MODULE_5__["fetchBusiness"];
   window.fetchBusinesses = _actions_business_actions__WEBPACK_IMPORTED_MODULE_5__["fetchBusinesses"];
+  window.fetchReview = _actions_review_actions__WEBPACK_IMPORTED_MODULE_6__["fetchReview"];
+  window.createReview = _util_review_api_util__WEBPACK_IMPORTED_MODULE_7__["createReview"];
   var root = document.getElementById('root');
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_root__WEBPACK_IMPORTED_MODULE_3__["default"], {
     store: store
@@ -1753,12 +1833,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
 /* harmony import */ var _businesses_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./businesses_reducer */ "./frontend/reducers/businesses_reducer.js");
+/* harmony import */ var _reviews_reducer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./reviews_reducer */ "./frontend/reducers/reviews_reducer.js");
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
-  businesses: _businesses_reducer__WEBPACK_IMPORTED_MODULE_2__["default"]
+  businesses: _businesses_reducer__WEBPACK_IMPORTED_MODULE_2__["default"],
+  reviews: _reviews_reducer__WEBPACK_IMPORTED_MODULE_3__["default"]
 }));
 
 /***/ }),
@@ -1779,6 +1862,48 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = (Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
   session: _session_errors_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
 }));
+
+/***/ }),
+
+/***/ "./frontend/reducers/reviews_reducer.js":
+/*!**********************************************!*\
+  !*** ./frontend/reducers/reviews_reducer.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash/merge */ "./node_modules/lodash/merge.js");
+/* harmony import */ var lodash_merge__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash_merge__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../actions/review_actions */ "./frontend/actions/review_actions.js");
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
+
+var reviewsReducer = function reviewsReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+  Object.freeze(state);
+
+  switch (action.type) {
+    case _actions_review_actions__WEBPACK_IMPORTED_MODULE_1__["RECEIVE_REVIEWS"]:
+      return action.reviews;
+
+    case _actions_review_actions__WEBPACK_IMPORTED_MODULE_1__["CREATE_REVIEW"]:
+      debugger;
+
+      var newReview = _defineProperty({}, action.review.id, action.review);
+
+      return lodash_merge__WEBPACK_IMPORTED_MODULE_0___default()({}, state, newReview);
+
+    default:
+      return state;
+  }
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (reviewsReducer);
 
 /***/ }),
 
@@ -1966,6 +2091,41 @@ var fetchBusiness = function fetchBusiness(id) {
   return $.ajax({
     method: "GET",
     url: "api/businesses/".concat(id)
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/util/review_api_util.js":
+/*!******************************************!*\
+  !*** ./frontend/util/review_api_util.js ***!
+  \******************************************/
+/*! exports provided: fetchReviews, createReview */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchReviews", function() { return fetchReviews; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createReview", function() { return createReview; });
+var fetchReviews = function fetchReviews(businessId) {
+  return $.ajax({
+    method: "GET",
+    url: "api/businesses/".concat(businessId, "/reviews")
+  });
+}; // export const fetchReview = id => (
+//     $.ajax({
+//         method: "GET",
+//         url: `api/businesses`
+//     })
+// )
+
+var createReview = function createReview(review) {
+  return $.ajax({
+    method: "POST",
+    url: "api/businesses/".concat(review.business_id, "/reviews"),
+    data: {
+      review: review
+    }
   });
 };
 

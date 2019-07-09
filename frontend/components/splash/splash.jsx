@@ -6,6 +6,7 @@ class Splash extends React.Component {
 
     componentDidMount(){
         this.props.fetchBusinesses();
+        
     }
 
     render() {
@@ -18,7 +19,8 @@ class Splash extends React.Component {
 
                     </div>
                     <div className='rec-businesses'>
-                        <Link to='/businesses/1'>Mc'Donalds</Link>
+                        <Link to='/businesses/1'>McDonalds</Link>
+                        <Link to='/businesses/2'>Hog Island Oyster Co</Link>
                     </div>
 
                 </div>

@@ -1,11 +1,16 @@
 .photo-index-page {
     display: flex;
     flex-direction: column;
+    min-width: 980px;
     width: 980px;
     max-width: 980px;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
+}
+
+.photo-index-header {
+    width: 980px;
 }
 
 .mini-business-link {
@@ -51,6 +56,7 @@
 
 .image-index-list-div {
     display: flex;
+    width: 980px;
 }
 
 .image-index-list {
@@ -58,6 +64,7 @@
     list-style: none;
     display: flex;
     flex-wrap: wrap;
+    width: 980px;
     // justify-content: center;
     padding: 0;
     border-top: 1px solid lightgray;

@@ -4,16 +4,18 @@ import { Link } from 'react-router-dom';
 const NavBar = ({ currentUser, logout }) => {
     const sessionLinks = () => {
         return (
-            <div className='navbar-container'>
-                <div className='navbar-content'>
-                    <a className='kelp-logo' href="/">
-                        <img className='logo-text' src="../../coollogo_com-31684455.png" />
-                        <img className='logo-image' src="https://divineeventslv.com/wp-content/uploads/2018/04/yelp-logo-27.png" />
-                    </a>
-                    <nav className="login-signup-nav">
-                        <Link className='login-nav' to="/login">Log In</Link>
-                        <Link className='signup-nav' to="/signup">Sign up</Link>
-                    </nav>
+            <div className='full-nav-bar'>
+                <div className='navbar-container'>
+                    <div className='navbar-content'>
+                        <a className='kelp-logo' href="/">
+                            <img className='logo-text' src="../../coollogo_com-31684455.png" />
+                            <img className='logo-image' src="https://divineeventslv.com/wp-content/uploads/2018/04/yelp-logo-27.png" />
+                        </a>
+                        <nav className="login-signup-nav">
+                            <Link className='login-nav' to="/login">Log In</Link>
+                            <Link className='signup-nav' to="/signup">Sign up</Link>
+                        </nav>
+                    </div>
                 </div>
             </div>
         )
