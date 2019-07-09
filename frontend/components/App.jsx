@@ -7,12 +7,14 @@ import Splash from './splash/splash_container'
 import { Switch, Route } from 'react-router-dom'
 import {AuthRoute, ProtectedRoute} from '../util/route_util';
 import PhotoForm from './business/photo_form_container';
+import PhotoIndex from './business/photo_index_container';
 
 const App = () => (
     <div>
         <Switch>
             <AuthRoute path='/login' component={LoginFormContainer}/>
             <AuthRoute path='/signup' component={SignupFormContainer}/>
+            <Route path='/businesses/:businessId/photos' component={PhotoIndex}/>
             <ProtectedRoute path='/businesses/:businessId/photo' component={PhotoForm}/>
             <Route path='/businesses/:businessId' component={BusinessShowContainer}/>
             <Route path='/'component={Splash}/>

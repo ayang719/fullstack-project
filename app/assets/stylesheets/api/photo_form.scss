@@ -1,0 +1,95 @@
+.show-link {
+    text-decoration: none;
+    color: #0073bb;
+}
+
+.show-link:hover {
+    text-decoration: underline;
+}
+
+.photo-form-page {
+    display: flex;
+    width: 1000px;
+    margin: 0 auto;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.upload-form-div {
+    display: flex;
+    justify-content: center;
+    border: 3px dashed #999;
+    height: 350px;
+    border-radius: 10px;
+    width: 85%;
+    margin: 50px;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.file-input {
+    display: hidden;
+    // color: white;
+    margin-left: 90px;
+    font-weight: bold;
+    font-size: 20px;
+    color: gray;
+}
+
+.dividing-line {
+    margin-top: 20px;
+    border: none;
+    border-top: 1px solid lightgray;
+    width: 500px;
+}
+
+.submit-photo-button {
+    background: red;
+    border: 1px solid red;
+    color: white;
+    font-weight: bold;
+    height: 40px;
+    width: 150px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.submit-photo-button:hover {
+    cursor: pointer;
+}
+
+.image-rules-div {
+    display: flex;
+    justify-content: center;
+    vertical-align: baseline;
+    align-content: center;
+    margin-top: 50px;
+}
+
+.image-rule {
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    width: 200px;
+    align-items: center;
+    margin: 0 30px;
+}
+
+.first-rule-image {
+    display: flex;
+}
+
+.rule-text {
+    margin-top: 20px;
+    width: 150px;
+    text-align: center;
+    font-size: 14px;
+    color: gray;
+}
+
