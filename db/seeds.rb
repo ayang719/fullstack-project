@@ -9,7 +9,7 @@ require 'open-uri'
 
 demoUser = User.create!(name: 'Demo User', email: 'kelpman@gmail.com', password: 'password')
 user1 = User.create!(name: 'Alex Yang', email: 'ayang719@gmail.com', password: 'password')
-
+user2 = User.create!(name: "Paul Cho", email: 'pcho@asauna.com', password: 'imascrub')
 
 
 mcdonalds = Business.create!({name: "McDonald's", address: '235 N Front St, San Francisco, CA 94111', phone_number: '415-397-6333'});
@@ -24,3 +24,5 @@ hogIsland.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/
 hogIsland.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/o+(2).jpg'), filename: 'o(2).jpg');
 
 hi_review = Review.create!( author_id: 1, business_id: hogIsland.id, body: 'great food', rating: 5)
+hi_review2 = Review.create!(author_id: user2.id, business_id: hogIsland.id, body: "The oysters are AMAZING. It's a little pricey but well worth it. Definitely reccommend trying the grilled oysters if you are looking for something a little different from the raw kind.", rating: 5)
+hi_review2 = Review.create!(author_id: user2.id, business_id: hogIsland.id, rating: 1, body: 'blah blah blah this food was garbage booooooooo')

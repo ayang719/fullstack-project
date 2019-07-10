@@ -1,24 +1,22 @@
 import { connect } from 'react-redux';
-import { fetchBusiness,  } from '../../actions/business_actions'
-import BusinessShow from './business_show'
-import { fetchReviews } from '../../actions/review_actions'
+import { fetchBusiness, } from '../../actions/business_actions';
+import ReviewForm from './review_form';
+import {fetchReview} from '../../actions/review_actions';
 
 const mapStateToProps = (state, ownProps) => {
     const businessId = parseInt(ownProps.match.params.businessId);
     const business = state.entities.businesses[businessId];
-    const reviews = state.entities.reviews
     return {
-        business,
-        reviews
+        business
     }
 }
 
 const mapDispatchToProps = dispatch => ({
     fetchBusiness: id => dispatch(fetchBusiness(id)),
-    fetchReviews: id => dispatch(fetchReviews(id))
+    fetchReview: review => dispatch(fetchReview(review))
 })
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(BusinessShow)
+)(ReviewForm);

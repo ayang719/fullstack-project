@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 import NavBarContainer from '../navbar/navbar_container';
 import PhotoForm from './photo_form';
+import { AuthRoute } from '../../util/route_util';
 
 class BusinessShow extends React.Component {
 
@@ -9,6 +10,7 @@ class BusinessShow extends React.Component {
         this.props.fetchBusiness(this.props.match.params.businessId);
         this.props.fetchReviews(this.props.match.params.businessId)
     }
+
     render() {
         if(this.props.business === undefined) return null;
         return (
@@ -19,6 +21,9 @@ class BusinessShow extends React.Component {
                         <h1 className='header-content'>
                             <div className='title'>
                                 {this.props.business.name}
+                            </div>
+                            <div className='add-review-button-div'>
+                                <Link className='add-review-button'to={`/businesses/${this.props.business.id}/review`}>Write a Review</Link>
                             </div>
                             <div className='add-photo-button-div'>
                                 <Link to={`/businesses/${this.props.business.id}/photo`}><img className='add-photo-icon' src="../../add-photo-icon.png" alt=""/></Link>
@@ -67,7 +72,20 @@ class BusinessShow extends React.Component {
                             </div>
                             <div className='reviews-list-div'>
                                 <ul className='reviews-list'>
-                                    {/* {this.props.business.reviewIds.map(review => (<li>{review.body}</li>))} */}
+                                    {Object.values(this.props.reviews).map( review => 
+                                    <li>
+                                        <div className='review-content-container'>
+                                            <div className='review-author-info-div'>
+                                                <img className='profile-pic' src='../../empty-profile.png'/>
+                                                <div className='user-name-div'>
+                                                    {review.user.name}
+                                                </div>
+                                            </div>
+                                            <div className='review-body-div'>
+                                                {review.body}
+                                            </div>
+                                        </div>
+                                    </li>)}
                                 </ul>
                             </div>
                         </div>

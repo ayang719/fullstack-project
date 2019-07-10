@@ -1,0 +1,32 @@
+.reviews-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.review-content-container {
+    display: flex;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    font-size: 14px;
+}
+
+.review-author-info-div {
+    font-weight: bold;
+    color: #0073bb;
+    min-width: 130px;
+    display: flex;
+    padding-right: 20px;
+}
+
+.profile-pic {
+    object-fit: cover;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.review-body-div {
+    margin-left: 50px;
+    max-width: 400px;
+}
