@@ -351,6 +351,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _navbar_navbar_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../navbar/navbar_container */ "./frontend/components/navbar/navbar_container.js");
 /* harmony import */ var _photo_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./photo_form */ "./frontend/components/business/photo_form.jsx");
 /* harmony import */ var _util_route_util__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../util/route_util */ "./frontend/util/route_util.jsx");
+/* harmony import */ var _star_rating__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./star_rating */ "./frontend/components/business/star_rating.jsx");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -368,6 +369,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -393,6 +395,18 @@ function (_React$Component) {
       this.props.fetchReviews(this.props.match.params.businessId);
     }
   }, {
+    key: "businessRating",
+    value: function businessRating() {
+      var reviews = Object.values(this.props.reviews);
+      var sum = 0;
+      reviews.forEach(function (review) {
+        return sum += review.rating;
+      });
+      var rating = sum / reviews.length;
+      console.log(rating);
+      return rating;
+    }
+  }, {
     key: "render",
     value: function render() {
       if (this.props.business === undefined) return null;
@@ -403,8 +417,18 @@ function (_React$Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "header-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "title-rating-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "title"
       }, this.props.business.name), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "rating-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "business-rating-div"
+      }, Object(_star_rating__WEBPACK_IMPORTED_MODULE_5__["starRatingHead"])(this.businessRating())), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "review-num-div"
+      }, Object.values(this.props.reviews).length, " reviews"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "header-buttons-links"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "add-review-button-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "add-review-button",
@@ -420,7 +444,7 @@ function (_React$Component) {
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "add-photo-button",
         to: "/businesses/".concat(this.props.business.id, "/photo")
-      }, "Add Photo"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Add Photo")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "info-list-div"
@@ -465,7 +489,7 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "photos-index-link",
         to: "/businesses/".concat(this.props.business.id, "/photos")
-      }, "See all Photos"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "See all ", this.props.business.photoUrls.length))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "under-show-content"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "reviews-index"
@@ -488,8 +512,16 @@ function (_React$Component) {
         }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "user-name-div"
         }, review.user.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "review-content"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "review-header"
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "review-stars"
+        }, Object(_star_rating__WEBPACK_IMPORTED_MODULE_5__["starRating"])(review.rating)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+          className: "review-date"
+        }, review.date)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "review-body-div"
-        }, review.body)));
+        }, review.body))));
       })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "info-rail"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1058,6 +1090,7 @@ function (_React$Component) {
         }
       }
 
+      console.log(val);
       return val;
     }
   }, {
@@ -1086,17 +1119,19 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "review-form-page-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "review-form-div",
-        onSubmit: this.handleSubmit.bind(this)
+        className: "review-form-page-container"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
+        className: "to-show-link-rf",
+        to: "/businesses/".concat(this.props.business.id)
+      }, this.props.business.name)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "review-form-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         id: "review-form",
-        className: "review-form"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-        cols: "30",
-        rows: "10",
-        placeholder: "Write your review here...",
-        onChange: this.update('body')
-      }, this.state.body), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "review-form",
+        onSubmit: this.handleSubmit.bind(this)
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "inner-review-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "rate"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "radio",
@@ -1143,9 +1178,15 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         htmlFor: "star1",
         title: "text"
-      }, "1 star")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+      }, "1 star")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        className: "review-form-ta",
+        cols: "30",
+        rows: "10",
+        placeholder: "Write your review here...",
+        onChange: this.update('body')
+      }, this.state.body)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "submit-review-button"
-      }, "Submit Review"))));
+      }, "Post Review")))));
     }
   }]);
 
@@ -1194,6 +1235,79 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mapStateToProps, mapDispatchToProps)(_review_form__WEBPACK_IMPORTED_MODULE_2__["default"]));
+
+/***/ }),
+
+/***/ "./frontend/components/business/star_rating.jsx":
+/*!******************************************************!*\
+  !*** ./frontend/components/business/star_rating.jsx ***!
+  \******************************************************/
+/*! exports provided: starRating, starRatingHead */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "starRating", function() { return starRating; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "starRatingHead", function() { return starRatingHead; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var starRating = function starRating(rating) {
+  var rate = Math.ceil(rating - 0.25);
+
+  var starCreate = function starCreate() {
+    if (rating >= 1) {
+      rating -= 1;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "star-checked-".concat(rate)
+      }, "\u2605");
+    } else if (rating <= 0) {
+      rating -= 1;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "star-unchecked"
+      }, "\u2605");
+    } else if (rating < 1 && rating > 0.25) {
+      rating -= 1;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "star-half-checked-".concat(rate)
+      }, "\u2605");
+    }
+
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "star-unchecked"
+    }, "\u2605");
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, starCreate(rating), starCreate(rating), starCreate(rating), starCreate(rating), starCreate(rating));
+};
+var starRatingHead = function starRatingHead(rating) {
+  var rate = Math.ceil(rating - 0.25);
+
+  var starCreate = function starCreate() {
+    if (rating >= 1) {
+      rating -= 1;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "head-star-checked-".concat(rate)
+      }, "\u2605");
+    } else if (rating <= 0) {
+      rating -= 1;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "head-star-unchecked"
+      }, "\u2605");
+    } else if (rating < 1 && rating > 0.25) {
+      rating -= 1;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "head-star-half-checked-".concat(rate)
+      }, "\u2605");
+    }
+
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+      className: "head-star-unchecked"
+    }, "\u2605");
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, starCreate(rating), starCreate(rating), starCreate(rating), starCreate(rating), starCreate(rating));
+};
 
 /***/ }),
 

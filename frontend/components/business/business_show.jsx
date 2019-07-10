@@ -3,12 +3,22 @@ import { Link } from 'react-router-dom'
 import NavBarContainer from '../navbar/navbar_container';
 import PhotoForm from './photo_form';
 import { AuthRoute } from '../../util/route_util';
+import {starRating, starRatingHead} from './star_rating';
 
 class BusinessShow extends React.Component {
 
     componentDidMount() {
         this.props.fetchBusiness(this.props.match.params.businessId);
         this.props.fetchReviews(this.props.match.params.businessId)
+    }
+
+    businessRating() {
+        const reviews = Object.values(this.props.reviews);
+        let sum = 0;
+        reviews.forEach(review => sum += review.rating);
+        let rating = sum / reviews.length;
+        console.log(rating);
+        return rating;
     }
 
     render() {
@@ -19,15 +29,27 @@ class BusinessShow extends React.Component {
                 <div className='show-page-container'>
                     <div className='show-page'>
                         <h1 className='header-content'>
-                            <div className='title'>
-                                {this.props.business.name}
+                            <div className='title-rating-div'>
+                                <div className='title'>
+                                    {this.props.business.name}
+                                </div>
+                                <div className='rating-div'>
+                                    <div className='business-rating-div'>                                    
+                                        {starRatingHead(this.businessRating())}
+                                    </div>
+                                    <div className='review-num-div'>
+                                        {Object.values(this.props.reviews).length} reviews
+                                    </div>
+                                </div>
                             </div>
-                            <div className='add-review-button-div'>
-                                <Link className='add-review-button'to={`/businesses/${this.props.business.id}/review`}>Write a Review</Link>
-                            </div>
-                            <div className='add-photo-button-div'>
-                                <Link to={`/businesses/${this.props.business.id}/photo`}><img className='add-photo-icon' src="../../add-photo-icon.png" alt=""/></Link>
-                                <Link className='add-photo-button' to={`/businesses/${this.props.business.id}/photo`}>Add Photo</Link>
+                            <div className='header-buttons-links'>
+                                <div className='add-review-button-div'>
+                                    <Link className='add-review-button'to={`/businesses/${this.props.business.id}/review`}>Write a Review</Link>
+                                </div>
+                                <div className='add-photo-button-div'>
+                                    <Link to={`/businesses/${this.props.business.id}/photo`}><img className='add-photo-icon' src="../../add-photo-icon.png" alt=""/></Link>
+                                    <Link className='add-photo-button' to={`/businesses/${this.props.business.id}/photo`}>Add Photo</Link>
+                                </div>
                             </div>
                         </h1>
                         <div className='show-content'>              
@@ -59,7 +81,7 @@ class BusinessShow extends React.Component {
                                 <img className='second-image' src={this.props.business.photoUrls[1]}/>
                                 <img className='third-image' src={this.props.business.photoUrls[2]}/>
                                 <footer>
-                                    <Link className='photos-index-link' to={`/businesses/${this.props.business.id}/photos`}>See all Photos</Link>
+                                    <Link className='photos-index-link' to={`/businesses/${this.props.business.id}/photos`}>See all {this.props.business.photoUrls.length}</Link>
                                 </footer>
                             </div>
                         </div>
@@ -81,8 +103,18 @@ class BusinessShow extends React.Component {
                                                     {review.user.name}
                                                 </div>
                                             </div>
-                                            <div className='review-body-div'>
-                                                {review.body}
+                                            <div className='review-content'>
+                                                <div className='review-header'>
+                                                    <div className='review-stars'>
+                                                        {starRating(review.rating)} 
+                                                    </div>
+                                                    <div className='review-date'>
+                                                        {review.date}
+                                                    </div>
+                                                </div>
+                                                <div className='review-body-div'>
+                                                    {review.body}
+                                                </div>
                                             </div>
                                         </div>
                                     </li>)}
