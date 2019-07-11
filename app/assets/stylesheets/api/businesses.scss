@@ -185,7 +185,17 @@
 .image-list {
     vertical-align: middle;
     position: relative;
+    align-items: center;
     float: right;
+    display:flex;
+}
+
+.image-list > .second-image {
+    order: -1;
+}
+
+.image-list > .first-image {
+    order: -1;
 }
 
 .photos-index-link {
@@ -204,8 +214,15 @@
     object-fit: cover;
     height: 200px;
     width: 200px;
-    position: relative;
+    // position: relative;
     vertical-align: middle;
+}
+.first-image:hover {
+    height: 230px;
+    width: 230px;
+    z-index: 1;
+
+    // transition: 300ms;
 }
 
 .second-image {
@@ -213,16 +230,45 @@
     height: 230px;
     width: 230px;
     z-index: 1;
-    position: relative;
+    // position: relative;
     vertical-align: middle;
+}
+.second-image:hover {
+    object-fit: cover;
+    height: 230px;
+    width: 230px;
+    z-index: 1;
+    // position: relative;
+    // vertical-align: middle;
 }
 .third-image {
     object-fit: cover;
     height: 200px;
     width: 200px;
-    position: relative;
+    
+    // position: relative;
     vertical-align: middle;
 }
+
+.first-image:hover ~ .second-image{
+    height: 200px;
+    width: 200px;
+    // transition: 300ms;
+} 
+.third-image:hover {
+    height: 230px;
+    width: 230px;
+    z-index: 1;
+
+    // transition: 300ms;
+}
+
+.third-image:hover ~ .second-image{
+    height: 200px;
+    width: 200px;
+    // transition: 300ms;
+} 
+
 
 .under-show-content {
     display: flex;

@@ -476,17 +476,19 @@ function (_React$Component) {
         href: 'https://www.google.com/maps/place/' + this.props.business.address,
         target: "_blank"
       }, "Get Directions")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "outer-image-list"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "image-list"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "first-image",
         src: this.props.business.photoUrls[0]
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        className: "second-image",
-        src: this.props.business.photoUrls[1]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "third-image",
         src: this.props.business.photoUrls[2]
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "second-image",
+        src: this.props.business.photoUrls[1]
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
         className: "photos-index-link",
         to: "/businesses/".concat(this.props.business.id, "/photos")
       }, "See all ", this.props.business.photoUrls.length))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {

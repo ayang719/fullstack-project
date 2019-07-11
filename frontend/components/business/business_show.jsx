@@ -76,10 +76,12 @@ class BusinessShow extends React.Component {
                                     </li>
                                 </ul>
                             </div>
-                            <div className='image-list'>
-                                <img className='first-image' src={this.props.business.photoUrls[0]}/>
-                                <img className='second-image' src={this.props.business.photoUrls[1]}/>
-                                <img className='third-image' src={this.props.business.photoUrls[2]}/>
+                            <div className='outer-image-list'>
+                                <div className='image-list'>
+                                    <img className='first-image' src={this.props.business.photoUrls[0]}/>
+                                    <img className='third-image' src={this.props.business.photoUrls[2]}/>
+                                    <img className='second-image' src={this.props.business.photoUrls[1]}/>
+                                </div>
                                 <footer>
                                     <Link className='photos-index-link' to={`/businesses/${this.props.business.id}/photos`}>See all {this.props.business.photoUrls.length}</Link>
                                 </footer>
