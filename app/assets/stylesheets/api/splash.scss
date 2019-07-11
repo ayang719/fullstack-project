@@ -1,0 +1,101 @@
+.splash-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.big-ramen {
+    // position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 600px;
+    // left: 0;
+    // top: 0;
+}
+
+.splash-header {
+    position: relative;
+    text-align: center;
+    // color: white;
+}
+
+.greetings-div {
+    z-index: 100;
+    position: absolute;
+    top: 20px;
+    right: 400px;
+}
+
+
+.spl-logo-text {
+    max-width: 160px;
+    max-height: 100px;
+    margin-top: 5px;
+}
+
+.spl-logo-image {
+    max-width: 100px;
+    max-height: 100px;
+}
+
+.spl-kelp-logo {
+    z-index: 100;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 300px;
+    // width: 200px;
+}
+
+.rec-businesses {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rec-businesses-header {
+    margin-top: 30px;
+    color: red;
+    margin-bottom: 10px;
+}
+
+.rec-links-div {
+    display: flex;
+}
+
+.rec {
+    text-decoration: none;
+    color: #0073bb;
+    font-weight: bold;
+}
+
+.rec:hover {
+    text-decoration: underline;
+}
+
+.rec-div {
+    margin: 10px 5px;
+}
+
+.rec-link-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    border-radius: 10px;
+    border: 1px solid lightgray;
+}
+
+.rec-link-div:hover {
+    border: 2px solid gray;
+}
+
+.rec-pic {
+    object-fit: cover;
+    height: 120px;
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 30px;
+}

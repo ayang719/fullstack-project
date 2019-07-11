@@ -4,7 +4,7 @@ import { fetchBusinesses } from '../../actions/business_actions'
 import { fetchUsers } from '../../actions/session_actions'
 
 const mapStateToProps = state => ({
-
+    businesses: state.entities.businesses
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -1,34 +1,49 @@
-.to-login {
-    background: pink;
-    text-decoration: none;
-    margin-top: 15px;
-    display: block;
-    width: 70px;
-    border: 1px solid grey;
-    border-radius: 5px;
-    text-align: center;
-    margin-left: 10px;
-    color: black;
-    font-size: 14;
-}
-
 .login-signup {
     display: flex;
     width: 200px;
-
+    font-weight: bold;
 }
 
-.to-signup {
-    background: white;
+.login-link-spl {
+    color: white;
     text-decoration: none;
-    margin-top: 15px;
-    display: block;
-    width: 85px;
-    border: 1px solid grey;
-    border-radius: 5px;
-    text-align: center;
-    margin-left: 10px;
-    color: black;
+    padding: 5px 10px;
+    margin-right: 10px;
 
 }
 
+.login-link-spl:hover {
+    border-bottom: 2px solid white;
+}
+
+.signup-link-spl {
+    color: white;
+    border: 2px solid white;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+
+}
+
+.signup-link-spl:hover {
+    background: white;
+    color: black;
+    transition: 500ms;
+}
+
+.header-button {
+    background: transparent;
+    border: 1px solid transparent;
+    color: white;
+    padding: 5px 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.header-button:hover {
+    cursor: pointer;
+    color: black;
+    background: white;
+    transition:500ms;
+}

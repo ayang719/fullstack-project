@@ -24,6 +24,17 @@ hogIsland.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/
 hogIsland.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/o+(1).jpg'), filename: 'o(1).jpg');
 hogIsland.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/o+(2).jpg'), filename: 'o(2).jpg');
 
+menshoTokyo = Business.create!({name: 'Mensho Tokyo', address: '672 Geary Stm San Francisco, CA 94102', phone_number:'415-800-8345'})
+
+menshoTokyo.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/mensho1.jpg'), filename: 'mensho1.jpg')
+menshoTokyo.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/mensho2.jpg'), filename: 'mensho2.jpg')
+menshoTokyo.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/mensho3.jpg'), filename: 'mensho3.jpg')
+
+mt_review = Review.create!( author_id: user1.id, business_id: menshoTokyo.id, body:"Some of the best ramen I've had in San Francisco. Definitely recommend coming here", rating: 5)
+mt_review2 = Review.create!( author_id: user2.id, business_id: menshoTokyo.id, rating: 3, body:"Good ramen, but I have definitely had better. I would say that I'm a ramen connoisseur ¯\_(ツ)_/¯")
+mt_review3 = Review.create!( author_id: user3.id, business_id: menshoTokyo.id, rating: 5, body: "This was recommended by a friend and I was quite surprised at how good it was")
+
+
 hi_review = Review.create!( author_id: user1.id, business_id: hogIsland.id, body: 'great food', rating: 5)
 hi_review2 = Review.create!(author_id: user2.id, business_id: hogIsland.id, body: "The oysters are AMAZING. It's a little pricey but well worth it. Definitely reccommend trying the grilled oysters if you are looking for something a little different from the raw kind.", rating: 5)
 hi_review3 = Review.create!(author_id: user3.id, business_id: hogIsland.id, rating: 4, body: 'Great vibes, fresh seafood. My only complaint would be that it is a little pricey')
