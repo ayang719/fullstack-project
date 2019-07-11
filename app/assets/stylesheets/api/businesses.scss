@@ -49,8 +49,25 @@
     
 }
 
+.tags-list-div {
+    margin-top: 10px;
+}
+
+.tags-list {
+    list-style: none;
+    display: flex;
+}
+
+.tag-label {
+    font-weight: normal;
+    color: #0073bb;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
 .header-buttons-links {
     display: flex;
+    align-items: center;
 }
 
 .add-review-button-div {

@@ -9,6 +9,7 @@ import {AuthRoute, ProtectedRoute} from '../util/route_util';
 import PhotoForm from './business/photo_form_container';
 import PhotoIndex from './business/photo_index_container';
 import ReviewForm from './business/review_form_container'
+import BusinessIndexContainer from './business/business_index_container'
 
 const App = () => (
     <div>
@@ -19,6 +20,7 @@ const App = () => (
             <Route path='/businesses/:businessId/photos' component={PhotoIndex}/>
             <ProtectedRoute path='/businesses/:businessId/photo' component={PhotoForm}/>
             <Route path='/businesses/:businessId' component={BusinessShowContainer}/>
+            <Route path='/businesses' component={BusinessIndexContainer}/>
             <Route path='/'component={Splash}/>
         </Switch>
         <div className='footer-div'>

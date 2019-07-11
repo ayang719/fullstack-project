@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       resources :reviews, only: [:create, :index, :show]
     end
     resources :reviews, only: [:delete]
+    resources :tags, only: [:create]
   end
 
   root "static_pages#root"

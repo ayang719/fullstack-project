@@ -1,0 +1,52 @@
+.business-index {
+    width: 950px;
+    margin: 0 auto;
+}
+
+.index-item-div {
+    display: flex;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid lightgray;
+}
+
+.index-photo {
+    object-fit: cover;
+    min-width: 180px;
+    max-width: 180px;
+    height: 180px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.business-index-header {
+    margin: 20px 0;
+}
+
+.business-name-link {
+    text-decoration: none;
+    color: #0073bb;
+}
+
+.business-name-link:hover {
+    text-decoration: underline;
+}
+
+.item-info-div {
+    width: 100%;
+}
+
+.item-title-div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.index-phone-number {
+    font-size: 14px;
+}
+
+.review-amount-idx {
+    color: gray;
+}
