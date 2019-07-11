@@ -18,4 +18,6 @@ class Business < ApplicationRecord
     has_many :reviews,
         foreign_key: :business_id,
         class_name: :Review
+
+    has_many :tags
 end

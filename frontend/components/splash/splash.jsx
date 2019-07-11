@@ -31,10 +31,15 @@ class Splash extends React.Component {
                         <h2 className='rec-businesses-header'>Find the Best Businesses</h2>
                         <div className='rec-links-div'>
                             <div className='rec-div'>
-                                <Link className='rec' to={`/businesses/${this.props.businesses[1].id}`}>
+                                <Link className='rec' to={`/businesses/${this.props.businesses[4].id}`}>
                                     <div className='rec-link-div'>
-                                        <img className='rec-pic' src={this.props.businesses[1].photoUrls[1]} />
-                                        {this.props.businesses[1].name}
+                                        <img className='rec-pic' src={this.props.businesses[4].photoUrls[1]} />
+                                        {this.props.businesses[4].name}
+                                        <div className='tags-list'>
+                                            {this.props.businesses[4].tagLabels.map(tag => (
+                                                <div className='tag-label'>{tag},</div>
+                                            ))}
+                                        </div>
                                     </div>
                                 </Link>
                             </div>
@@ -43,6 +48,11 @@ class Splash extends React.Component {
                                     <div className='rec-link-div'>
                                         <img className='rec-pic' src={this.props.businesses[2].photoUrls[0]}/>
                                         {this.props.businesses[2].name}
+                                        <div className='tags-list'>
+                                            {this.props.businesses[2].tagLabels.map(tag => (
+                                                <div className='tag-label'>{tag},</div>
+                                            ))}
+                                        </div>
                                     </div>
                                 </Link>
                             </div>
@@ -51,9 +61,17 @@ class Splash extends React.Component {
                                     <div className='rec-link-div'>
                                         <img className='rec-pic' src={this.props.businesses[3].photoUrls[0]}/>
                                         {this.props.businesses[3].name}
+                                        <div className='tags-list'>
+                                            {this.props.businesses[3].tagLabels.map(tag => (
+                                                <div className='tag-label'>{tag},</div>
+                                            ))}
+                                        </div>
                                     </div>
                                 </Link>
                             </div>
+                        </div>
+                        <div className='all-business-link-div'>
+                            <Link className='all-businesses-link' to='/businesses'>See All Businesses</Link>
                         </div>
                     </div>
                 </div>

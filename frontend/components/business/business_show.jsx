@@ -41,6 +41,13 @@ class BusinessShow extends React.Component {
                                         {Object.values(this.props.reviews).length} reviews
                                     </div>
                                 </div>
+                                <div className='tags-list-div'>
+                                    <div className='tags-list'>
+                                        {this.props.business.tagLabels.map( tag => (
+                                            <div className='tag-label'>{tag},</div>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
                             <div className='header-buttons-links'>
                                 <div className='add-review-button-div'>

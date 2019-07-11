@@ -34,6 +34,16 @@ mt_review = Review.create!( author_id: user1.id, business_id: menshoTokyo.id, bo
 mt_review2 = Review.create!( author_id: user2.id, business_id: menshoTokyo.id, rating: 3, body:"Good ramen, but I have definitely had better. I would say that I'm a ramen connoisseur ¯\_(ツ)_/¯")
 mt_review3 = Review.create!( author_id: user3.id, business_id: menshoTokyo.id, rating: 5, body: "This was recommended by a friend and I was quite surprised at how good it was")
 
+aburaya = Business.create!( name: 'Aburaya Japanese Fried Chicken', address: '362 17th St, Oakland, CA 94612', phone_number: '510-502-7743')
+
+aburaya.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/abu1.jpg'), filename: 'abu1.jpg')
+aburaya.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/abu2.jpg'), filename: 'abu2.jpg')
+aburaya.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/abu3.jpg'), filename: 'abu3.jpg')
+
+abu_review1 = Review.create!( author_id: user2.id, business_id: aburaya.id, body: 'My Favorite Restaurant ever!!! The fried chicken is so good', rating: 5)
+abu_review1 = Review.create!( author_id: user1.id, business_id: aburaya.id, body: 'This fried chicken is really good', rating: 4)
+abu_review1 = Review.create!( author_id: user3.id, business_id: aburaya.id, body: 'Good Chicken, Better vibes', rating: 4)
+abu_review1 = Review.create!( author_id: user4.id, business_id: aburaya.id, body: 'Everything here was pretty good, but not the best. Solid place tho', rating: 3)
 
 hi_review = Review.create!( author_id: user1.id, business_id: hogIsland.id, body: 'great food', rating: 5)
 hi_review2 = Review.create!(author_id: user2.id, business_id: hogIsland.id, body: "The oysters are AMAZING. It's a little pricey but well worth it. Definitely reccommend trying the grilled oysters if you are looking for something a little different from the raw kind.", rating: 5)
@@ -47,3 +57,14 @@ mc_review2 = Review.create!( author_id: user4.id, business_id: mcdonalds.id, rat
 mc_review3 = Review.create!( author_id: user3.id, business_id: mcdonalds.id, rating: 3, body: "McDonald's is McDonalds")
 mc_review4 = Review.create!( author_id: user2.id, business_id: mcdonalds.id, rating: 1, body: "The food doesn't look like how it looks in the advertisements!! What a letdown")
 
+japaneseTag = Tag.create!(label: 'Japanese', business_id: menshoTokyo.id)
+japaneseTag2 = Tag.create!(label: 'Japanese', business_id: aburaya.id)
+ramenTag = Tag.create!(label: 'Ramen', business_id: menshoTokyo.id)
+
+seafoodTag = Tag.create!(label: 'Seafood', business_id: hogIsland.id)
+seafoodTag = Tag.create!(label: 'Live/Raw Food', business_id: hogIsland.id)
+
+fastFoodTag = Tag.create!(label: 'Fast Food', business_id: mcdonalds.id)
+burgerTag = Tag.create!(label: 'Burgers', business_id: mcdonalds.id)
+
+friedChickenTag = Tag.create!(label: 'Fried Chicken', business_id: aburaya.id)
