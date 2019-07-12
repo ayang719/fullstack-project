@@ -21,6 +21,8 @@
 
 .business-index-header {
     margin: 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid lightgray;
 }
 
 .business-name-link {
@@ -33,13 +35,13 @@
 }
 
 .item-info-div {
-    width: 100%;
+    width: 70%;
 }
 
 .item-title-div {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 70%;
     align-items: center;
 }
 
