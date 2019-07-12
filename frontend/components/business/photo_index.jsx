@@ -1,6 +1,8 @@
 import React from 'react';
 import NavBarContainer from '../navbar/navbar_container';
 import {Link} from 'react-router-dom';
+import { starRating, starRatingHead } from './star_rating';
+
 
 class PhotoIndex extends React.Component {
     componentDidMount() {
@@ -9,7 +11,13 @@ class PhotoIndex extends React.Component {
 
     render() {
         if (!this.props.business) return null;
-
+        const businessRating = (reviews) => {
+            let sum = 0;
+            reviews.forEach(review => sum += review);
+            let rating = sum / reviews.length;
+            console.log(rating);
+            return rating;
+        }
         return (
             <div>
                 <NavBarContainer/>
@@ -20,8 +28,12 @@ class PhotoIndex extends React.Component {
                             <div className='mini-business-link'>
                                 <Link className='mini-link-text' to={`/businesses/${this.props.business.id}`}>
                                     <img className='pi-link-photo' src={this.props.business.photoUrls[0]}/>
-                                    {this.props.business.name}
+                                    <div className='photo-index-stars'>
+                                        {this.props.business.name}
+                                        {starRating(businessRating(this.props.business.reviewRatings))}
+                                    </div>
                                 </Link>
+
                             </div>
                             <div className='to-upload-div'>
                                 <Link className='pi-upload-link'to={`/businesses/${this.props.business.id}/photo`}>

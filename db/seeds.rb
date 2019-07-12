@@ -12,6 +12,8 @@ user1 = User.create!(name: 'Alex Yang', email: 'ayang719@gmail.com', password: '
 user2 = User.create!(name: "Paul Cho", email: 'pcho@asauna.com', password: 'imascrub')
 user3 = User.create!(name: 'David Song', email: 'dsong@yollow.com', password: 'imhellaweak')
 user4 = User.create!(name: 'Emarson Serrano', email: 'eserrano@revw.com', password:'myreviewplatformisbetter')
+user5 = User.create!(name: 'Chris Gee', email: 'chrisgee@chris.com', password: 'chirsgee')
+user6 = User.create!(name: 'Kenny Choi', email: 'kenny@airbnbplus.com', password: 'whydopeoplekeepaskingmeforhelp')
 
 mcdonalds = Business.create!({name: "McDonald's", address: '235 N Front St, San Francisco, CA 94111', phone_number: '415-397-6333'});
 hogIsland = Business.create!({name: "Hog Island Oyster Co", address: 'Ferry Building, San Francisco, CA 94111', phone_number: '415-391-7117'});
@@ -19,10 +21,20 @@ menshoTokyo = Business.create!({name: 'Mensho Tokyo', address: '672 Geary Stm Sa
 aburaya = Business.create!( name: 'Aburaya Japanese Fried Chicken', address: '362 17th St, Oakland, CA 94612', phone_number: '510-502-7743')
 tacorea = Business.create!(name: 'Tacorea', address: '809 Bush St, San Francisco, CA 94108', phone_number: '415-885-1325')
 cheeseBoard = Business.create!(name: 'Cheese Board Pizza', address: '1512 Shattuck Ave, Berkeley, CA 94709', phone_number: '510-549-3183')
+barbara = Business.create!(name: "Barbara's Fishtrap", address: '281 Capistrano Rd, Half Moon Bay, CA, 94019', phone_number: '650-728-7049')
+donut = Business.create!(name: "Bob's Donut & Pastry Shop", address: '1621 Polk St, San Francisco, CA 94109', phone_number: '415-776-3141')
 
-cheeseBoard.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/cb1.jpg'), filname: 'cb1.jpg')
-cheeseBoard.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/cb1.2pg'), filname: 'cb1.jpg')
-cheeseBoard.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/cb1.3pg'), filname: 'cb1.jpg')
+donut.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/donut1.jpg'), filename: 'donut1.jpg')
+donut.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/donut2.jpg'), filename: 'donut2.jpg')
+donut.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/donut3.jpg'), filename: 'donut3.jpg')
+
+barbara.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/bbft1.jpg'), filename: 'bbft1.jpg')
+barbara.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/bbft2.jpg'), filename: 'bbft2.jpg')
+barbara.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/bbft3.jpg'), filename: 'bbft3.jpg')
+
+cheeseBoard.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/cb1.jpg'), filename: 'cb1.jpg')
+cheeseBoard.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/cb2.jpg'), filename: 'cb2.jpg')
+cheeseBoard.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/cb3.jpg'), filename: 'cb3.jpg')
 
 tacorea.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/taco1.jpg'), filename: 'taco1.jpg')
 tacorea.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/taco2.jpg'), filename: 'taco2.jpg')
@@ -45,6 +57,15 @@ menshoTokyo.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.co
 aburaya.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/abu1.jpg'), filename: 'abu1.jpg')
 aburaya.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/abu2.jpg'), filename: 'abu2.jpg')
 aburaya.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/abu3.jpg'), filename: 'abu3.jpg')
+
+dr1 = Review.create!(author_id: user6.id, business_id: donut.id, rating: 5, body: 'Love the donuts. The bigger the better!')
+dr1 = Review.create!(author_id: user3.id, business_id: donut.id, rating: 3, body: 'Everything here is great')
+dr1 = Review.create!(author_id: user5.id, business_id: donut.id, rating: 4, body: 'Apple fritters are bomb')
+
+br1 = Review.create!(author_id: user5.id, business_id: barbara.id, rating: 5, body: 'Best clam chowder in the world!!')
+br2 = Review.create!(author_id: user2.id, business_id: barbara.id, rating: 4, body: 'Really fresh seafood and cooked well')
+br3 = Review.create!(author_id: user3.id, business_id: barbara.id, rating: 5, body: 'Love the calamari')
+br4 = Review.create!(author_id: user4.id, business_id: barbara.id, rating: 5, body: 'Everything is great')
 
 cbr1 = Review.create!(author_id: user2.id, business_id: cheeseBoard.id,  rating: 5, body: "I really can't believe I thought Pizza Hut was the best pizza before eating here LOL. Cheeseboard is literally lifechanging. ")
 cbr2 = Review.create!(author_id: user3.id, business_id: cheeseBoard.id, rating: 4, body: "One of the best pizza I had in the bay area. There is a line but it moves really fast. Great customer service.")
@@ -80,6 +101,7 @@ japaneseTag = Tag.create!(label: 'Japanese', business_id: menshoTokyo.id)
 japaneseTag2 = Tag.create!(label: 'Japanese', business_id: aburaya.id)
 ramenTag = Tag.create!(label: 'Ramen', business_id: menshoTokyo.id)
 seafoodTag = Tag.create!(label: 'Seafood', business_id: hogIsland.id)
+seafoodTag = Tag.create!(label: 'Seafood', business_id: barbara.id)
 seafoodTag = Tag.create!(label: 'Live/Raw Food', business_id: hogIsland.id)
 fastFoodTag = Tag.create!(label: 'Fast Food', business_id: mcdonalds.id)
 burgerTag = Tag.create!(label: 'Burgers', business_id: mcdonalds.id)
@@ -87,3 +109,6 @@ friedChickenTag = Tag.create!(label: 'Fried Chicken', business_id: aburaya.id)
 koreanTag = Tag.create!(label: 'Korean', business_id: tacorea.id)
 BurritoTag = Tag.create!(label: 'Burritos', business_id: tacorea.id)
 mexicanTag = Tag.create!(label: 'Mexican', business_id: tacorea.id)
+bakeryTag = Tag.create!(label: 'Bakeries', business_id: donut.id)
+donutTag = Tag.create!(label: 'Donuts', business_id: donut.id)
+pizzaTag = Tag.create!(label: 'Pizza', business_id: cheeseBoard.id)
