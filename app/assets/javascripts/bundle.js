@@ -540,10 +540,17 @@ var BusinessShow =
 function (_React$Component) {
   _inherits(BusinessShow, _React$Component);
 
-  function BusinessShow() {
+  function BusinessShow(props) {
+    var _this;
+
     _classCallCheck(this, BusinessShow);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(BusinessShow).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(BusinessShow).call(this, props));
+    _this.state = {
+      isFlushed: false
+    };
+    console.log('hello');
+    return _this;
   }
 
   _createClass(BusinessShow, [{
@@ -551,6 +558,7 @@ function (_React$Component) {
     value: function componentDidMount() {
       this.props.fetchBusiness(this.props.match.params.businessId);
       this.props.fetchReviews(this.props.match.params.businessId);
+      console.log('mounted');
     }
   }, {
     key: "businessRating",
@@ -567,7 +575,14 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      if (this.props.business === undefined) return null;
+      if (this.props.business === undefined) {
+        return null;
+      } // debugger;
+      // if(Object.values(this.props.reviews)[0].business_id !== this.props.business.id) {
+      //     this.forceUpdate();
+      // }
+
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_navbar_container__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "show-page-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -1712,9 +1727,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -1728,10 +1743,20 @@ var SearchBar =
 function (_React$Component) {
   _inherits(SearchBar, _React$Component);
 
-  function SearchBar() {
+  function SearchBar(props) {
+    var _this;
+
     _classCallCheck(this, SearchBar);
 
-    return _possibleConstructorReturn(this, _getPrototypeOf(SearchBar).apply(this, arguments));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(SearchBar).call(this, props));
+    _this.state = {
+      query: ''
+    };
+    _this.handleInputChange = _this.handleInputChange.bind(_assertThisInitialized(_this));
+    _this.getData = _this.getData.bind(_assertThisInitialized(_this));
+    _this.handleRedirect = _this.handleRedirect.bind(_assertThisInitialized(_this)); // this.forceUpdate = this.forceUpdate.bind(this)
+
+    return _this;
   }
 
   _createClass(SearchBar, [{
@@ -1740,13 +1765,96 @@ function (_React$Component) {
       this.props.fetchBusinesses();
     }
   }, {
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.forceUpdate();
+    }
+  }, {
+    key: "handleInputChange",
+    value: function handleInputChange() {
+      this.setState({
+        query: this.search.value
+      });
+    }
+  }, {
+    key: "handleRedirect",
+    value: function handleRedirect(businessId) {
+      this.props.fetchReviews(businessId);
+    }
+  }, {
+    key: "getData",
+    value: function getData(query) {
+      var _this2 = this;
+
+      var businesses = Object.values(this.props.businesses);
+
+      if (this.state.query.length === 0) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-results-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "search-results-ul"
+      }, businesses.map(function (business) {
+        if (business.name.toLowerCase().includes(query.toLowerCase())) {
+          return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+            onClick: function onClick() {
+              return _this2.handleRedirect(business.id);
+            },
+            className: "search-results-li"
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+            className: "search-result-link",
+            onClick: function onClick() {
+              return _this2.handleRedirect(business.id);
+            },
+            to: "/businesses/".concat(business.id)
+          }, business.name));
+        } else {
+          for (var i = 0; i < business.tagLabels.length; i++) {
+            var tag = business.tagLabels[i];
+
+            if (tag.toLowerCase().includes(query.toLowerCase())) {
+              return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+                className: "search-results-li"
+              }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+                className: "search-result-link",
+                onClick: function onClick() {
+                  return _this2.handleRedirect(business.id);
+                },
+                to: "/businesses/".concat(business.id)
+              }, business.name));
+            }
+          }
+        }
+      })));
+    }
+  }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       if (!this.props.businesses[1]) return null;
       var businesses = Object.values(this.props.businesses);
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-bar-main-div"
-      }, "SearchBar");
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "search-bar-wrap"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "find"
+      }, "Find"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "search-bar-form"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        className: "search-bar-input",
+        placeholder: "Search for...",
+        ref: function ref(input) {
+          return _this3.search = input;
+        },
+        type: "text",
+        onChange: this.handleInputChange
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "suggestions-div"
+      }, this.getData(this.state.query)));
     }
   }]);
 
@@ -1769,6 +1877,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _search_bar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./search_bar */ "./frontend/components/navbar/search_bar.jsx");
 /* harmony import */ var _actions_business_actions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../actions/business_actions */ "./frontend/actions/business_actions.js");
+/* harmony import */ var _actions_review_actions__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../actions/review_actions */ "./frontend/actions/review_actions.js");
+
 
 
 
@@ -1783,6 +1893,9 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     fetchBusinesses: function fetchBusinesses() {
       return dispatch(Object(_actions_business_actions__WEBPACK_IMPORTED_MODULE_2__["fetchBusinesses"])());
+    },
+    fetchReviews: function fetchReviews(id) {
+      return dispatch(Object(_actions_review_actions__WEBPACK_IMPORTED_MODULE_3__["fetchReviews"])(id));
     }
   };
 };
@@ -2271,6 +2384,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../greeting/greeting_container */ "./frontend/components/greeting/greeting_container.js");
+/* harmony import */ var _navbar_search_bar_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../navbar/search_bar_container */ "./frontend/components/navbar/search_bar_container.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2288,6 +2402,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -2326,6 +2441,8 @@ function (_React$Component) {
         className: "spl-logo-image",
         src: "https://divineeventslv.com/wp-content/uploads/2018/04/yelp-logo-27.png"
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "splash-searchbar-div"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar_search_bar_container__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "greetings-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_greeting_greeting_container__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
         className: "big-ramen",

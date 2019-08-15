@@ -7,10 +7,23 @@ import {starRating, starRatingHead} from './star_rating';
 
 class BusinessShow extends React.Component {
 
+   constructor(props) {
+       super(props);
+       this.state = {
+           isFlushed: false
+       };
+       console.log('hello')
+   }
+
+    
     componentDidMount() {
         this.props.fetchBusiness(this.props.match.params.businessId);
         this.props.fetchReviews(this.props.match.params.businessId)
+        console.log('mounted')
+      
     }
+
+    
 
     businessRating() {
         const reviews = Object.values(this.props.reviews);
@@ -22,7 +35,15 @@ class BusinessShow extends React.Component {
     }
 
     render() {
-        if(this.props.business === undefined) return null;
+        
+        if(this.props.business === undefined) {
+            
+            return null;
+        }
+        // debugger;
+        // if(Object.values(this.props.reviews)[0].business_id !== this.props.business.id) {
+        //     this.forceUpdate();
+        // }
         return (
             <div>
                 <NavBarContainer/>

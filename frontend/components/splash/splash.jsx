@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import GreetingsContainer from '../greeting/greeting_container';
+import SearchBar from '../navbar/search_bar_container';
 
 class Splash extends React.Component {
 
@@ -20,6 +21,9 @@ class Splash extends React.Component {
                     <div className='spl-kelp-logo'>
                         <img className='spl-logo-text' src="../../coollogo_com-31684455.png" />
                         <img className='spl-logo-image' src="https://divineeventslv.com/wp-content/uploads/2018/04/yelp-logo-27.png" />
+                    </div>
+                    <div className='splash-searchbar-div'>
+                        <SearchBar/>
                     </div>
                     <div className='greetings-div'>
                         <GreetingsContainer/>
