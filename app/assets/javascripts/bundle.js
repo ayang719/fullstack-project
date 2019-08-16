@@ -1780,6 +1780,9 @@ function (_React$Component) {
     key: "handleRedirect",
     value: function handleRedirect(businessId) {
       this.props.fetchReviews(businessId);
+      this.setState({
+        query: ''
+      });
     }
   }, {
     key: "getData",

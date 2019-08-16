@@ -28,7 +28,9 @@ class SearchBar extends React.Component {
 
     handleRedirect(businessId) {
         this.props.fetchReviews(businessId);
-        
+        this.setState({
+            query: ''
+        })
     }
 
     getData(query) {
