@@ -44,14 +44,14 @@ class SearchBar extends React.Component {
                     {businesses.map( business => {
                         if(business.name.toLowerCase().includes(query.toLowerCase())) {
                             return <li onClick={() => this.handleRedirect(business.id)} className='search-results-li'>
-                                <Link className='search-result-link' onClick={() => this.handleRedirect(business.id)} to={`/businesses/${business.id}`}>{business.name}</Link>
+                                <Link className='search-result-link' onClick={() => this.handleRedirect(business.id)} to={`/businesses/${business.id}`}> <img className='search-result-img' src={business.photoUrls[0]} /><b className='search-result-title'>{business.name}</b></Link>
                                    </li>
                         } else {
                             for(let i = 0; i < business.tagLabels.length; i++) {
                                 let tag = business.tagLabels[i];
                                 if (tag.toLowerCase().includes(query.toLowerCase())) {
                                     return <li className='search-results-li'>
-                                        <Link className='search-result-link' onClick={() => this.handleRedirect(business.id)} to={`/businesses/${business.id}`}>{business.name}</Link>
+                                        <Link className='search-result-link' onClick={() => this.handleRedirect(business.id)} to={`/businesses/${business.id}`}><img className='search-result-img' src={business.photoUrls[0]} /><b className='search-result-title'>{business.name}</b></Link>
                                     </li>
                                 }
                             }

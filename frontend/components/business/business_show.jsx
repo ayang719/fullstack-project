@@ -4,6 +4,8 @@ import NavBarContainer from '../navbar/navbar_container';
 import PhotoForm from './photo_form';
 import { AuthRoute } from '../../util/route_util';
 import {starRating, starRatingHead} from './star_rating';
+import { Map, GoogleApiWrapper } from 'google-maps-react';
+import MapComponent from './map_component';
 
 class BusinessShow extends React.Component {
 
@@ -40,10 +42,13 @@ class BusinessShow extends React.Component {
             
             return null;
         }
+        
         // debugger;
         // if(Object.values(this.props.reviews)[0].business_id !== this.props.business.id) {
         //     this.forceUpdate();
         // }
+        const lat = parseFloat(this.props.business.lat);
+        const lng = parseFloat(this.props.business.lng);
         return (
             <div>
                 <NavBarContainer/>
@@ -83,7 +88,7 @@ class BusinessShow extends React.Component {
                         <div className='show-content'>              
                             <div className='info-list-div'>
                                 <div className='map-div'>
-                                    map will go here
+                                    <MapComponent lat={lat} lng={lng}/>
                                 </div>
                                 <ul className='info-list'>
                                     <li className='address-li'>
@@ -282,4 +287,8 @@ class BusinessShow extends React.Component {
     }
 }
 
-export default BusinessShow;
+// export default BusinessShow;
+
+export default GoogleApiWrapper({
+    apiKey: 'AIzaSyDHJhUVPAnUvjM6AH4GZ_eaAVmSqfT3b6s'
+})(BusinessShow)

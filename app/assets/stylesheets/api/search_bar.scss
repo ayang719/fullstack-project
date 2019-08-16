@@ -44,6 +44,7 @@
     width: 400px;
     border: 1px solid lightgray;
     border-radius: 0px 0px 10px 10px;
+    text-align: left;
 
 }
 
@@ -59,6 +60,22 @@
     color: black;   
 }
 
-.search-results-li {
+.search-result-link {
     padding-top: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-results-li {
+    margin-bottom: 10px;
+}
+
+
+.search-result-img{
+    object-fit: cover;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    border-radius: 5px;
 }

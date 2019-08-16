@@ -7,6 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 
+User.destroy_all
+Business.destroy_all
+Review.destroy_all
+Tag.destroy_all
+
 demoUser = User.create!(name: 'Demo User', email: 'kelpman@gmail.com', password: 'password')
 user1 = User.create!(name: 'Alex Yang', email: 'ayang719@gmail.com', password: 'password')
 user2 = User.create!(name: "Paul Cho", email: 'pcho@asauna.com', password: 'imascrub')
@@ -15,14 +20,14 @@ user4 = User.create!(name: 'Emarson Serrano', email: 'eserrano@revw.com', passwo
 user5 = User.create!(name: 'Chris Gee', email: 'chrisgee@chris.com', password: 'chirsgee')
 user6 = User.create!(name: 'Kenny Choi', email: 'kenny@airbnbplus.com', password: 'whydopeoplekeepaskingmeforhelp')
 
-mcdonalds = Business.create!({name: "McDonald's", address: '235 N Front St, San Francisco, CA 94111', phone_number: '415-397-6333'});
-hogIsland = Business.create!({name: "Hog Island Oyster Co", address: 'Ferry Building, San Francisco, CA 94111', phone_number: '415-391-7117'});
-menshoTokyo = Business.create!({name: 'Mensho Tokyo', address: '672 Geary Stm San Francisco, CA 94102', phone_number:'415-800-8345'})
-aburaya = Business.create!( name: 'Aburaya Japanese Fried Chicken', address: '362 17th St, Oakland, CA 94612', phone_number: '510-502-7743')
-tacorea = Business.create!(name: 'Tacorea', address: '809 Bush St, San Francisco, CA 94108', phone_number: '415-885-1325')
-cheeseBoard = Business.create!(name: 'Cheese Board Pizza', address: '1512 Shattuck Ave, Berkeley, CA 94709', phone_number: '510-549-3183')
-barbara = Business.create!(name: "Barbara's Fishtrap", address: '281 Capistrano Rd, Half Moon Bay, CA, 94019', phone_number: '650-728-7049')
-donut = Business.create!(name: "Bob's Donut & Pastry Shop", address: '1621 Polk St, San Francisco, CA 94109', phone_number: '415-776-3141')
+mcdonalds = Business.create!({name: "McDonald's", address: '235 N Front St, San Francisco, CA 94111', phone_number: '415-397-6333', lat: '37.793898', lng: '-122.399094'});
+hogIsland = Business.create!({name: "Hog Island Oyster Co", address: 'Ferry Building, San Francisco, CA 94111', phone_number: '415-391-7117', lat: '37.796055', lng: '-122.393597'});
+menshoTokyo = Business.create!({name: 'Mensho Tokyo', address: '672 Geary St San Francisco, CA 94102', phone_number:'415-800-8345', lat:'37.786763', lng: '-122.414339'})
+aburaya = Business.create!( name: 'Aburaya Japanese Fried Chicken', address: '362 17th St, Oakland, CA 94612', phone_number: '510-502-7743', lat:'37.806096', lng: '-122.267576')
+tacorea = Business.create!(name: 'Tacorea', address: '809 Bush St, San Francisco, CA 94108', phone_number: '415-885-1325', lat: '37.789844', lng: '-122.410693')
+cheeseBoard = Business.create!(name: 'Cheese Board Pizza', address: '1512 Shattuck Ave, Berkeley, CA 94709', phone_number: '510-549-3183', lat: '37.880070', lng: '-122.269462')
+barbara = Business.create!(name: "Barbara's Fishtrap", address: '281 Capistrano Rd, Half Moon Bay, CA, 94019', phone_number: '650-728-7049', lat: '37.503484', lng: '-122.485081')
+donut = Business.create!(name: "Bob's Donut & Pastry Shop", address: '1621 Polk St, San Francisco, CA 94109', phone_number: '415-776-3141', lat: '37.791915', lng: '-122.421204')
 
 donut.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/donut1.jpg'), filename: 'donut1.jpg')
 donut.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/donut2.jpg'), filename: 'donut2.jpg')

@@ -189,6 +189,15 @@
     margin: 5px;
 }
 
+.bus-show-map {
+    max-width: 258px;
+    max-height: 150px;
+}
+
+.map-comp-div {
+    z-index: 0;
+}
+
 .info-list-div {
     border: 1px solid lightgray;
     margin-right: 5px;
@@ -266,6 +275,8 @@
     // position: relative;
     vertical-align: middle;
 }
+
+
 
 .first-image:hover ~ .second-image{
     height: 200px;
