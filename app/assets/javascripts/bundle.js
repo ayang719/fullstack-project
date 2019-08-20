@@ -1840,11 +1840,13 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(SearchBar).call(this, props));
     _this.state = {
-      query: ''
+      query: '',
+      location: 'San Francisco'
     };
     _this.handleInputChange = _this.handleInputChange.bind(_assertThisInitialized(_this));
     _this.getData = _this.getData.bind(_assertThisInitialized(_this));
-    _this.handleRedirect = _this.handleRedirect.bind(_assertThisInitialized(_this)); // this.forceUpdate = this.forceUpdate.bind(this)
+    _this.handleRedirect = _this.handleRedirect.bind(_assertThisInitialized(_this));
+    _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_this)); // this.forceUpdate = this.forceUpdate.bind(this)
 
     return _this;
   }
@@ -1867,6 +1869,13 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "handleSelect",
+    value: function handleSelect() {
+      this.setState({
+        location: this.loc.value
+      });
+    }
+  }, {
     key: "handleRedirect",
     value: function handleRedirect(businessId) {
       this.props.fetchReviews(businessId);
@@ -1885,12 +1894,27 @@ function (_React$Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null);
       }
 
+      var latBounds = [0, 0];
+      var lngBounds = [0, 0];
+
+      if (this.state.location === 'San Francisco') {
+        latBounds[0] = 37.773972 - 1;
+        latBounds[1] = 37.773972 + 1;
+        lngBounds[0] = -122.431297 - 1;
+        lngBounds[1] = -122.431297 + 1;
+      } else if (this.state.location === 'Chicago') {
+        latBounds[0] = 41.881832 - 1;
+        latBounds[1] = 41.881832 + 1;
+        lngBounds[0] = -87.623177 - 1;
+        lngBounds[1] = -87.623177 + 1;
+      }
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "search-results-div"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
         className: "search-results-ul"
       }, businesses.map(function (business) {
-        if (business.name.toLowerCase().includes(query.toLowerCase())) {
+        if (business.name.toLowerCase().includes(query.toLowerCase()) && business.lat > latBounds[0] && business.lat < latBounds[1] && business.lng > lngBounds[0] && business.lng < lngBounds[1]) {
           return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
             onClick: function onClick() {
               return _this2.handleRedirect(business.id);
@@ -1912,7 +1936,7 @@ function (_React$Component) {
           for (var i = 0; i < business.tagLabels.length; i++) {
             var tag = business.tagLabels[i];
 
-            if (tag.toLowerCase().includes(query.toLowerCase())) {
+            if (tag.toLowerCase().includes(query.toLowerCase()) && business.lat > latBounds[0] && business.lat < latBounds[1] && business.lng > lngBounds[0] && business.lng < lngBounds[1]) {
               return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
                 className: "search-results-li"
               }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
@@ -1955,7 +1979,20 @@ function (_React$Component) {
         },
         type: "text",
         onChange: this.handleInputChange
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "near"
+      }, "Near"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+        name: "locations",
+        className: "location-selector",
+        ref: function ref(inp) {
+          return _this3.loc = inp;
+        },
+        onChange: this.handleSelect
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "San Francisco"
+      }, "San Francisco"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        value: "Chicago"
+      }, "Chicago")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "suggestions-div"
       }, this.getData(this.state.query)));
     }
@@ -38524,7 +38561,7 @@ function warning(message) {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
