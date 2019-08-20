@@ -106,8 +106,8 @@ class SearchBar extends React.Component {
                             ref={inp => this.loc = inp}
                             onChange={this.handleSelect}>
                             {/* <option value="Search Area..."></option> */}
-                            <option value="San Francisco">San Francisco</option>
-                            <option value="Chicago">Chicago</option>
+                            <option className='location-option' value="San Francisco">San Francisco</option>
+                            <option className='location-option' value="Chicago">Chicago</option>
                         </select>
                     </form>
                 </div>

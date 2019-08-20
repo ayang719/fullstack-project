@@ -1989,8 +1989,10 @@ function (_React$Component) {
         },
         onChange: this.handleSelect
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        className: "location-option",
         value: "San Francisco"
       }, "San Francisco"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+        className: "location-option",
         value: "Chicago"
       }, "Chicago")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "suggestions-div"

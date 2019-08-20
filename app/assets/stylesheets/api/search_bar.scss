@@ -17,25 +17,27 @@
     
 }
 
-// .location-selector {
-//     // background: white;
-//     height: 100%;
-//     font-weight: bold;
-//     // color: #666666;
-//     padding: 7px;
-//     // margin-top: 12px;
-//     height: 18px;
-
-// }
-
 .location-selector {
     height: 32px;
+    font-size: 16px;
     background: white;
     border: 1px solid white;
     font-weight: bold;
     color: #666666;
     padding-right: 20px;
     border-radius: 0 5px 5px 0;
+    outline: none;
+}
+
+select > option {
+    margin-top: 10px;
+}
+
+.location-option {
+    margin-top: 10px;
+    background: white;
+    font-weight: bold;
+    border-radius: 0 0 5px 5px;
 }
 
 .search-bar-wrap {
