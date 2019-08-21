@@ -67,16 +67,30 @@ class SearchBar extends React.Component {
             <div className='search-results-div'>
                 <ul className='search-results-ul'>
                     {businesses.map( business => {
-                        if (business.name.toLowerCase().includes(query.toLowerCase()) && (business.lat > latBounds[0] && business.lat < latBounds[1]) && (business.lng > lngBounds[0] && business.lng < lngBounds[1])) {
+                        if (business.name.toLowerCase().includes(query.toLowerCase()) && 
+                            (business.lat > latBounds[0] && business.lat < latBounds[1]) && 
+                            (business.lng > lngBounds[0] && business.lng < lngBounds[1])) {
                             return <li onClick={() => this.handleRedirect(business.id)} className='search-results-li'>
-                                <Link className='search-result-link' onClick={() => this.handleRedirect(business.id)} to={`/businesses/${business.id}`}> <img className='search-result-img' src={business.photoUrls[0]} /><b className='search-result-title'>{business.name}</b></Link>
+                                <Link className='search-result-link' 
+                                      onClick={() => this.handleRedirect(business.id)} 
+                                      to={`/businesses/${business.id}`}> 
+                                    <img className='search-result-img' src={business.photoUrls[0]} />
+                                    <b className='search-result-title'>{business.name}</b>
+                                </Link>
                                    </li>
                         } else {
                             for(let i = 0; i < business.tagLabels.length; i++) {
                                 let tag = business.tagLabels[i];
-                                if (tag.toLowerCase().includes(query.toLowerCase()) && (business.lat > latBounds[0] && business.lat < latBounds[1]) && (business.lng > lngBounds[0] && business.lng < lngBounds[1])) {
+                                if (tag.toLowerCase().includes(query.toLowerCase()) && 
+                                    (business.lat > latBounds[0] && business.lat < latBounds[1]) && 
+                                    (business.lng > lngBounds[0] && business.lng < lngBounds[1])) {
                                     return <li className='search-results-li'>
-                                        <Link className='search-result-link' onClick={() => this.handleRedirect(business.id)} to={`/businesses/${business.id}`}><img className='search-result-img' src={business.photoUrls[0]} /><b className='search-result-title'>{business.name}</b></Link>
+                                        <Link className='search-result-link' 
+                                              onClick={() => this.handleRedirect(business.id)} 
+                                              to={`/businesses/${business.id}`}>
+                                            <img className='search-result-img' src={business.photoUrls[0]} />
+                                            <b className='search-result-title'>{business.name}</b>
+                                        </Link>
                                     </li>
                                 }
                             }

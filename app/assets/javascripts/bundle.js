@@ -1926,7 +1926,7 @@ function (_React$Component) {
               return _this2.handleRedirect(business.id);
             },
             to: "/businesses/".concat(business.id)
-          }, " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+          }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
             className: "search-result-img",
             src: business.photoUrls[0]
           }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", {
