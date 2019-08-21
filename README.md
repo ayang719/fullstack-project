@@ -24,6 +24,6 @@ Clone of Yelp, a website for reviewing restaurants and other businesses.
 
 ### Search by type of food or by business name, filtered by location
 
-![business show](./public/tag_search.png)
+![business show](./public/tag_search.png
 ![business show](./public/name_search.png)
 ![business show](./public/chicago_search.png)
