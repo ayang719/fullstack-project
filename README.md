@@ -8,21 +8,21 @@
 
 Clone of Yelp, a website for reviewing restaurants and other businesses.
 
-* Rails backend with React/Redux frontend
+###### Rails backend with React/Redux frontend
 
-### View Business Information
+* View Business Information
 
 ![business show](./public/business_show_sc.png)
 
-### Upload Photos from the business
+* Upload Photos from the business
 
 ![business show](./public/phto_upload_sc.png)
 
-### Post Reviews
+* Post Reviews
 
 ![business show](./public/review_form_sc.png)
 
-### Search by type of food or by business name, filtered by location
+* Search by type of food or by business name, filtered by location
 
 ![business show](./public/tag_search.png)
 ![business show](./public/name_search.png)
