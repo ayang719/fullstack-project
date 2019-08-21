@@ -4,7 +4,7 @@
 
 <img src="./public/homepage_screenshot.png" />
 
-## ShowCase
+## Showcase
 
 Clone of Yelp, a website for reviewing restaurants and other businesses.
 
