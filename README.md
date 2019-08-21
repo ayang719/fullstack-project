@@ -1,4 +1,7 @@
-# README
+# Kelp
+
+[Kelp Live](https://kelpp.herokuapp.com/#/) -- Open in a new tab to avoid being redirected
+
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
