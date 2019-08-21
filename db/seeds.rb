@@ -29,6 +29,27 @@ cheeseBoard = Business.create!(name: 'Cheese Board Pizza', address: '1512 Shattu
 barbara = Business.create!(name: "Barbara's Fishtrap", address: '281 Capistrano Rd, Half Moon Bay, CA, 94019', phone_number: '650-728-7049', lat: '37.503484', lng: '-122.485081')
 donut = Business.create!(name: "Bob's Donut & Pastry Shop", address: '1621 Polk St, San Francisco, CA 94109', phone_number: '415-776-3141', lat: '37.791915', lng: '-122.421204')
 
+oiistar = Business.create!(name: 'Oiistar', address: '385 N Milwauke Ave, Chicago, IL 60622', phone_number: '773-360-8791', lat: '41.907111', lng: '-87.672097')
+portillo = Business.create!(name: "Portillo's Hot Dogs", address: '520 W Taylor St, Chicago, IL, 60607', phone_number: '312-667-4560', lat: '41.870344', lng: '-87.640192')
+cheval = Business.create!(name: 'Au Cheval', address: '800 W Randolph St, Chicago, IL, 60607', phone_number: '312-929-4580', lat: '41.884635', lng: '-87.647586')
+rice = Business.create!(name: 'Fat Rice', address: '2957 W Diversey Ave, Chicago, IL, 60647', phone_number: '773-661-9170', lat: '41.931951', lng: ' -87.702368')
+
+rice.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/fr1.jpg'), filename: 'fr1.jpg')
+rice.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/fr2.jpg'), filename: 'fr2.jpg')
+rice.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/fr3.jpg'), filename: 'fr3.jpg')
+
+cheval.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/au1.jpg'), filename: 'au1.jpg')
+cheval.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/au2.jpg'), filename: 'au2.jpg')
+cheval.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/au3.jpg'), filename: 'au3.jpg')
+
+portillo.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/port1.jpg'), filename: 'port1.jpg')
+portillo.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/port2.jpg'), filename: 'port2.jpg')
+portillo.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/port3.jpg'), filename: 'port3.jpg')
+
+oiistar.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/oii1.jpg'), filename: 'oii1.jpg')
+oiistar.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/oii2.jpg'), filename: 'oii2.jpg')
+oiistar.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/oii3.jpg'), filename: 'oii3.jpg')
+
 donut.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/donut1.jpg'), filename: 'donut1.jpg')
 donut.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/donut2.jpg'), filename: 'donut2.jpg')
 donut.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/donut3.jpg'), filename: 'donut3.jpg')
@@ -62,6 +83,26 @@ menshoTokyo.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.co
 aburaya.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/abu1.jpg'), filename: 'abu1.jpg')
 aburaya.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/abu2.jpg'), filename: 'abu2.jpg')
 aburaya.photos.attach(io: open('https://kelpp-seed.s3-us-west-1.amazonaws.com/abu3.jpg'), filename: 'abu3.jpg')
+
+rr1 = Review.create!(author_id: user5.id, business_id: rice.id, rating: 4, body: 'Food was awesome! Loved the spin they put on Portuguese cuisine here.')
+rr2 = Review.create!(author_id: user3.id, business_id: rice.id, rating: 3, body: 'I enjoyed my meal but felt a little overpriced.')
+rr3 = Review.create!(author_id: user4.id, business_id: rice.id, rating: 5, body: 'We ordered the pork and ginger dumplings and wow they are absolutely delicious.')
+rr4 = Review.create!(author_id: user2.id, business_id: rice.id, rating: 4, body: 'Like other reviewers, I thought this place was good, but not good enough to be worth the price point.')
+
+
+aur1 = Review.create!(author_id: user4.id, business_id: cheval.id, rating: 5, body: "This place has probably one of the best burgers I've ever had")
+aur2 = Review.create!(author_id: user3.id, business_id: cheval.id, rating: 5, body: "I've heard people say this is the best burger but I didn't believe it til I actually experienced it. ")
+aur3 = Review.create!(author_id: user6.id, business_id: cheval.id, rating: 4, body: "Delicious food, the fries are great")
+aur4 = Review.create!(author_id: user2.id, business_id: cheval.id, rating: 4, body: "Pretty decent food")
+
+ptr1 = Review.create!(author_id: user2.id, business_id: portillo.id, rating: 5, body: 'Good Hotdogs but the best thing here is the Italian beef. THe cheese fries are also super delicious')
+ptr2 = Review.create!(author_id: user5.id, business_id: portillo.id, rating: 4, body: "I've definitely had better hotdogs but these are still super good along with everything else on the menu")
+ptr3 = Review.create!(author_id: user3.id, business_id: portillo.id, rating: 3, body: 'Terrible service, everyone just seemed rushed, food was okay')
+
+or1 = Review.create!(author_id: user1.id, business_id: oiistar.id, rating: 5, body: "Great Ramen and the buns are good too. Some of the better Ramen in the city")
+or2 = Review.create!(author_id: user4.id, business_id: oiistar.id, rating: 4, body: "Really good ramen, but not the best. There is better in Chicago")
+or3 = Review.create!(author_id: user3.id, business_id: oiistar.id, rating: 3, body: "A bit too rich for me")
+or4 = Review.create!(author_id: user5.id, business_id: oiistar.id, rating: 5, body: "Really good ramen!")
 
 dr1 = Review.create!(author_id: user6.id, business_id: donut.id, rating: 5, body: 'Love the donuts. The bigger the better!')
 dr1 = Review.create!(author_id: user3.id, business_id: donut.id, rating: 3, body: 'Everything here is great')
@@ -102,14 +143,23 @@ taco_review1 = Review.create!(author_id: user2.id, business_id: tacorea.id, rati
 taco_review1 = Review.create!(author_id: user3.id, business_id: tacorea.id, rating: 4, body: 'Tacorea is one of my favorite go to restaurants in union square! They have limited seating inside the restaurant so I would recommend ordering for take out and enjoying your food somewhere else during peak times. ')
 
 
+chineseTag = Tag.create!(label: 'Chinese', business_id: rice.id)
+portugueseTag = Tag.create!(label: 'Portuguese', business_id: rice.id)
+americanTag = Tag.create!(label: 'American', business_id: cheval.id)
 japaneseTag = Tag.create!(label: 'Japanese', business_id: menshoTokyo.id)
 japaneseTag2 = Tag.create!(label: 'Japanese', business_id: aburaya.id)
+japaneseTag3 = Tag.create!(label: 'Japanese', business_id: oiistar.id)
 ramenTag = Tag.create!(label: 'Ramen', business_id: menshoTokyo.id)
+ramenTag2 = Tag.create!(label: 'Ramen', business_id: oiistar.id)
 seafoodTag = Tag.create!(label: 'Seafood', business_id: hogIsland.id)
 seafoodTag = Tag.create!(label: 'Seafood', business_id: barbara.id)
 seafoodTag = Tag.create!(label: 'Live/Raw Food', business_id: hogIsland.id)
+saladTag = Tag.create!(label: 'Salad', business_id: portillo.id)
 fastFoodTag = Tag.create!(label: 'Fast Food', business_id: mcdonalds.id)
+hotDogTag = Tag.create!(label: 'Hot Dogs', business_id: portillo.id)
 burgerTag = Tag.create!(label: 'Burgers', business_id: mcdonalds.id)
+burgerTag2 = Tag.create!(label: 'Burgers', business_id: portillo.id)
+burgerTag3 = Tag.create!(label: 'Burgers', business_id: cheval.id)
 friedChickenTag = Tag.create!(label: 'Fried Chicken', business_id: aburaya.id)
 koreanTag = Tag.create!(label: 'Korean', business_id: tacorea.id)
 BurritoTag = Tag.create!(label: 'Burritos', business_id: tacorea.id)
