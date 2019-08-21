@@ -4,25 +4,12 @@
 
 <img src="./public/homepage_screenshot.png" />
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## ShowCase
 
-Things you may want to cover:
+Clone of Yelp, a website for reviewing restaurants and other businesses.
 
-* Ruby version
+* Rails backend with React/Redux frontend
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<img src="./public/business_show_sc.png" />
+<img src="./public/review_form_sc.png" />
+<img src="./public/phto_upload_sc.png" />
