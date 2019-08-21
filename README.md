@@ -30,4 +30,4 @@ Clone of Yelp, a website for reviewing restaurants and other businesses.
 
 * Code for how the businesses are filtered with the search parameters
 
-![](./public/code_snippet.png
+![](./public/code_snippet.png)
