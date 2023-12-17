@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.2.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 6.0.1'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use Puma as the app server
@@ -28,7 +28,7 @@ gem 'pry-rails'
 gem 'pg'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-gem 'ez_download', git: 'https://github.com/OscarAlvarez8830/EZDownload.git'
+# gem 'ez_download', git: 'https://github.com/OscarAlvarez8830/EZDownload.git'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
